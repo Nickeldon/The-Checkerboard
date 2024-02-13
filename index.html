@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face { font-family: PixelifySans; src: url('./Addons/PixelifySans.ttf');}
+    </style>
+</head>
+<body style="background-color: transparent; overflow: hidden;">
+
+    <div class="main">
+        <div class="top-bar" style="position: absolute; top: 30px; color:white; display:flex; width: 590px;">
+            <div style="text-align: center; width: 100%;">
+                
+            <h4 style="text-align: center; margin-top:-1px">
+                Amasser toutes les cases <br> ou remportez 15 cases dollars
+            </h4>
+
+            </div>
+            <div class="stats" style="position:absolute; top:0; right:25px;">
+                cases: <span id="Num-case">0</span><br>
+                Money: <span id="Money-case" style="color: rgb(63, 143, 63);">0</span>
+            </div>
+        </div>
+
+        <div class="game-area" id="game-area" style="position: absolute; bottom: 0; width: 590px; height: 500px;">
+            <canvas width="590px" height="500px"></canvas>
+            <div id="cursor" class="cursor"></div>
+
+            <div id="game-over" style="display: none; width: 100%; height: 100%; opacity: 80%; background-color:black; position:absolute; top:0; color: white; transition: all 1s ease-out; opacity: 0%">
+                <h1 class="GMO-txt" style="background-color: transparent; position:absolute; font-size:70px; top: 15%; left:30px; transition: all 1s ease-out;">
+                    GAME <br> OVER
+                </h1>
+
+                <a class="GMO-btn" onclick="
+                document.getElementById('transition').style.display = 'block'
+                setTimeout(() => {
+                    document.getElementById('transition').style.opacity = '100%'
+
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1000)
+                }, 100)
+                " style="position:absolute; width:150px; height:40px; top:37%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">RESTART</a>
+            </div>
+        </div>
+        <div id="transition" style="width: 590px; height:100%; opacity:0%; display: none; background-color:black; position:absolute; top:0; transition:all 1s ease-out;"></div>
+    </div>
+    
+
+</body>
+
+<style>
+
+    .top-bar{
+        -webkit-app-region:drag;
+    }
+
+    a{
+        user-select:none;
+    }
+
+    *{
+        user-select: none;
+        font-family: PixelifySans, sans-serif;
+    }
+
+    .GMO-btn:hover{
+        letter-spacing: 5px;
+        cursor: pointer ;
+
+        h1{
+            color: rgb(91, 1, 1)
+        }
+    }
+    .game-area .cursor {
+    position: absolute;
+    }
+
+    canvas{
+        position: absolute;
+        top: 0;
+    }
+
+    .cursor{
+        width: 40px;
+        height: 40px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        animation: blink .5s alternate-reverse infinite;
+        background-color: gray;
+        transition: all .3s ease-out;
+    }
+
+    @keyframes blink {
+        from{
+            opacity: 100%;
+        }
+        to{
+            opacity: 40%;
+        }
+    }
+
+.main{
+    user-select: none;
+    width: 592px;
+    height: 576px;
+    margin: auto;
+    background-color: black;
+}
+    
+@keyframes tilt-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
+</style>
+
+<script src="main.js"></script>
+
+</html>

@@ -1,3 +1,21 @@
+document.getElementById('transition').style.display = 'block'
+setTimeout(() => {
+    document.getElementById('transition').style.opacity = '0%'
+document.getElementById('main').style.transform = 'scale(1)'
+setTimeout(() => {
+    document.getElementById('transition').style.display = 'none'
+}, 1000)
+}, 100)
+
+var data
+
+try {
+    data = window.parent.getData()    
+} catch (e) {
+    
+}
+
+
 const canvas = document.querySelector('canvas')
 var looptime = 10
 const ctx = canvas.getContext('2d')
@@ -28,6 +46,110 @@ ctx.fillRect(0, 0, canvas.width, canvas.height)
 	[ 'C3', 'C1', 'C3', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2', 'C1' ],
 	[ 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1' ]
  ]
+
+var map6 = [
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C1', 'C2', 'C3', 'C1', 'C1', 'C3', 'C1', 'C1', 'C2', 'C1'],
+    ['C1', 'C3', 'C1', 'C2', 'C2', 'C1', 'C2', 'C1', 'C3', 'C1'],
+    ['C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C1', 'C2', 'C3', 'C2', 'C2', 'C1', 'C1', 'C1'],
+    ['C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1'],
+    ['C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1'],
+    ['C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1'],
+    ['C1', 'C1', 'C3', 'C1', 'C1', 'C3', 'C1', 'C1', 'C3', 'C1'],
+    ['C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1']
+  ];
+ 
+var map1 = [
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C1', 'C2', 'C3', 'C1', 'C1', 'C3', 'C1', 'C1', 'C2', 'C1'],
+    ['C1', 'C3', 'C1', 'C2', 'C2', 'C1', 'C2', 'C1', 'C3', 'C1'],
+    ['C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C1', 'C2', 'C3', 'C2', 'C2', 'C1', 'C1', 'C1'],
+    ['C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1'],
+    ['C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1'],
+    ['C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1'],
+    ['C1', 'C1', 'C3', 'C1', 'C1', 'C3', 'C1', 'C1', 'C3', 'C1'],
+    ['C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1']
+  ];
+
+  var map2 = [
+    ['C1', 'C1', 'C3', 'C1', 'C1'],
+    ['C1', 'C2', 'C2', 'C2', 'C1'],
+    ['C3', 'C3', 'C1', 'C3', 'C3'],
+    ['C1', 'C2', 'C1', 'C2', 'C1'],
+    ['C1', 'C1', 'C3', 'C1', 'C1']
+  ];
+
+  var map3 = [
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1'],
+    ['C1', 'C1', 'C1', 'C3', 'C2', 'C3', 'C1', 'C1'],
+    ['C1', 'C1', 'C2', 'C3', 'C1', 'C3', 'C2', 'C1'],
+    ['C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1'],
+    ['C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2']
+  ];
+
+  var map4 = [
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1'],
+    ['C1', 'C1', 'C2', 'C3', 'C3', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C2', 'C1', 'C1', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C2', 'C3', 'C3', 'C2', 'C1', 'C1'],
+    ['C1', 'C1', 'C2', 'C1', 'C1', 'C2', 'C1', 'C1'],
+    ['C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1'],
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1']
+  ];
+
+  var map5 = [
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C1', 'C3', 'C2', 'C1', 'C1', 'C3', 'C1', 'C2'],
+    ['C1', 'C1', 'C3', 'C2', 'C2', 'C3', 'C1', 'C2'],
+    ['C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C2'],
+    ['C1', 'C1', 'C1', 'C3', 'C3', 'C1', 'C1', 'C3'],
+    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1'],
+    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
+    ['C2', 'C2', 'C2', 'C3', 'C3', 'C3', 'C2', 'C2']
+  ];
+
+  if(!data) {data = 'Map 1'; console.log(data)}
+
+  switch(data){
+    case 'Map 1': {
+        map = map
+    }break;
+
+    case 'Map 2': {
+        map = map5
+    }break;
+
+    case 'Map 3': {
+        map = map1
+    }break;
+
+    case 'Map 4': {
+        map = map2
+    }break;
+
+    case 'Map 5': {
+        map = map1
+    }break;
+
+    default: {
+        map = map
+    }
+  }
+
+var newlength = map[0].length
+var reqlength = 13
+
+document.querySelector('canvas').style.transform = `scale(${(reqlength / newlength)})`
+//document.getElementById('cursor').style.transform = `scale(${(reqlength / newlength)})`
+document.getElementById('cursor').style.height = 40*(reqlength / newlength) + 'px'
+document.getElementById('cursor').style.width = 40*(reqlength / newlength) + 'px'
+
 class block{
     constructor({position, type}){
         this.position = position,
@@ -109,6 +231,8 @@ blockmap.forEach((elem) => {
     elem.draw()
 })
 
+var ispaused = false
+
 window.addEventListener('keydown', (event) => {
     var key
 
@@ -133,6 +257,42 @@ window.addEventListener('keydown', (event) => {
 
         case 'ArrowRight': {
             keypressed.d.press = true
+        }break;
+
+        case 'Escape': {
+            console.log('yes')
+
+            if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
+            ispaused = true
+            document.getElementById('pause-game').style.display = 'block'
+
+            setTimeout(() => {
+                document.getElementById('pause-game').style.opacity = '80%'
+            }, 100)}
+            else{
+                ispaused = false
+                document.getElementById('pause-game').style.opacity = '0%'
+                setTimeout(() => {
+                    document.getElementById('pause-game').style.display = 'block'
+            }, 500)
+            }
+        }break;
+
+        case 'p': {
+            if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
+                ispaused = true
+                document.getElementById('pause-game').style.display = 'block'
+    
+                setTimeout(() => {
+                    document.getElementById('pause-game').style.opacity = '80%'
+                }, 100)}
+                else{
+                    ispaused = false
+                    document.getElementById('pause-game').style.opacity = '0%'
+                    setTimeout(() => {
+                        document.getElementById('pause-game').style.display = 'block'
+                }, 500)
+                }
         }break;
 
         default: {
@@ -177,6 +337,18 @@ function getProximityblocks(){
     },
     {
         'inside': null
+    },
+    {
+        'topright': null
+    },
+    {
+        'topleft': null
+    },
+    {
+        'downright': null
+    },
+    {
+        'downleft': null
     }]
     blockmap.forEach((elem) => {
         var bx = elem.position.x
@@ -198,19 +370,30 @@ function getProximityblocks(){
             //console.log('left')
             array[1].left = elem
         }
+        else if(by - cy === -45 && bx - cx === -45){
+            array[6].topleft = elem
+        }
+        else if(by - cy === -45 && bx - cx === 45){
+            array[5].topright = elem
+        }
+        else if(by - cy === 45 && bx - cx === 45){
+            array[7].downright = elem
+        }
+        else if(by - cy === 45 && bx - cx === -45){
+            array[8].downleft = elem
+        }
         else if(cx === bx && by === cy){
             array[4].inside = elem
         }
     })
  
-    return [array[0].top, array[1].left, array[2].right, array[3].down, array[4].inside]
+    return [array[0].top, array[1].left, array[2].right, array[3].down, array[4].inside, array[5].topright, array[6].topleft, array[7].downright, array[8].downleft]
 
 }
 
 function handleFinish(blocks){
 
     var cnt = 0;
-
     blocks.forEach((elem) => {
         if(!elem || elem.type === 'black'){
             cnt++
@@ -219,7 +402,7 @@ function handleFinish(blocks){
         }
     })
 
-    if(cnt === 5){
+    if(cnt === 8){
         document.getElementById('cursor').style.animation = 'tilt-shaking .1s infinite'
         document.getElementById('cursor').style.backgroundColor = 'rgb(133, 11, 11)'
         looptime = 9999
@@ -249,7 +432,7 @@ function animate(){
     var press
 
     
-    /*if(keypressed.d.press && keypressed.s.press){
+    if(keypressed.d.press && keypressed.s.press){
         press = 'down-right'
     }
     else if(keypressed.w.press && keypressed.d.press){
@@ -266,13 +449,13 @@ function animate(){
         else if(keypressed.d.press) press = 'd'
         else if(keypressed.w.press) press = 'w'
         else if(keypressed.s.press) press = 's'
-    }*/
+    }
 
-    if(keypressed.a.press) press = 'a'
+    /*if(keypressed.a.press) press = 'a'
         else if(keypressed.d.press) press = 'd'
         else if(keypressed.w.press) press = 'w'
         else if(keypressed.s.press) press = 's'
-
+*/
     const proxblocks = getProximityblocks()
     //console.log(proxblocks)
     try {
@@ -289,7 +472,7 @@ function animate(){
         
                 case 'd':{
                     moneycount++
-                    blockmap[blockmap.indexOf(proxblocks[4])].type = 'black'
+                    blockmap[blockmap.indexOf(proxblocks[4])].type = 'purple'
                 }break;
         
                 case 'purple':{
@@ -309,7 +492,7 @@ function animate(){
                 
                         case 'd':{
                             moneycount++
-                            blockmap[blockmap.indexOf(proxblocks[4])].type = 'black'
+                            blockmap[blockmap.indexOf(proxblocks[4])].type = 'purple'
                         }break;
                 
                         case 'purple':{
@@ -363,55 +546,51 @@ function animate(){
         }break;
 
         case 'up-left': {
-            /*if(proxblocks[0] && proxblocks[1]){
-                if(proxblocks[0].type === 'blue' || proxblocks[0].type === 'purple' || proxblocks[0].type === 'd' || proxblocks[0].type === 'blued'){
-                    if(proxblocks[1].type === 'blue' || proxblocks[1].type === 'purple' || proxblocks[1].type === 'd' || proxblocks[1].type === 'blued'){
+            if(proxblocks[6]){
+                if(proxblocks[6].type === 'blue' || proxblocks[6].type === 'purple' || proxblocks[6].type === 'd' || proxblocks[6].type === 'blued'){
                     iteration = 0
                     cursor.position.y -= 45
                     cursor.position.x -= 45
-                    casecount++}
+                    casecount++
                 }}
             keypressed.w.press = false
-            keypressed.a.press = false*/
+            keypressed.a.press = false
         }break;
 
         case 'up-right': {
-            /*if(proxblocks[0] && proxblocks[2]){
-                if(proxblocks[0].type === 'blue' || proxblocks[0].type === 'purple' || proxblocks[0].type === 'd' || proxblocks[0].type === 'blued'){
-                    if(proxblocks[2].type === 'blue' || proxblocks[2].type === 'purple' || proxblocks[2].type === 'd' || proxblocks[2].type === 'blued'){
-                    iteration = 0
+            if(proxblocks[5]){
+                if(proxblocks[5].type === 'blue' || proxblocks[5].type === 'purple' || proxblocks[5].type === 'd' || proxblocks[5].type === 'blued'){
+                     iteration = 0
                     cursor.position.y -= 45
                     cursor.position.x += 45
-                    casecount++}
+                    casecount++
                 }}
             keypressed.w.press = false
-            keypressed.d.press = false*/
+            keypressed.d.press = false
         }break;
 
         case 'down-left': {
-            /*if(proxblocks[3] && proxblocks[1]){
-                if(proxblocks[3].type === 'blue' || proxblocks[3].type === 'purple' || proxblocks[3].type === 'd' || proxblocks[3].type === 'blued'){
-                    if(proxblocks[1].type === 'blue' || proxblocks[1].type === 'purple' || proxblocks[1].type === 'd' || proxblocks[1].type === 'blued'){
+            if(proxblocks[8]){
+                  if(proxblocks[8].type === 'blue' || proxblocks[8].type === 'purple' || proxblocks[8].type === 'd' || proxblocks[8].type === 'blued'){
                     iteration = 0
                     cursor.position.y += 45
                     cursor.position.x -= 45
-                    casecount++}
+                    casecount++
                 }}
             keypressed.s.press = false
-            keypressed.a.press  = false*/
+            keypressed.a.press  = false
         }break;
 
         case 'down-right': {
-            /*if(proxblocks[3] && proxblocks[2]){
-                if(proxblocks[3].type === 'blue' || proxblocks[3].type === 'purple' || proxblocks[3].type === 'd' || proxblocks[3].type === 'blued'){
-                    if(proxblocks[2].type === 'blue' || proxblocks[2].type === 'purple' || proxblocks[2].type === 'd' || proxblocks[2].type === 'blued'){
+            if(proxblocks[7]){
+                if(proxblocks[7].type === 'blue' || proxblocks[7].type === 'purple' || proxblocks[7].type === 'd' || proxblocks[7].type === 'blued'){
                     iteration = 0
                     cursor.position.y += 45
                     cursor.position.x += 45
-                    casecount++}
+                    casecount++
                 }}
             keypressed.s.press = false
-            keypressed.d.press = false*/
+            keypressed.d.press = false
         }break;
 
     }
@@ -425,12 +604,12 @@ function animate(){
 
     document.getElementById('Num-case').innerText = casecount
     document.getElementById('Money-case').innerText = moneycount
-    handleFinish(proxblocks)
+    handleFinish([proxblocks[0], proxblocks[1], proxblocks[2], proxblocks[3], proxblocks[5], proxblocks[6], proxblocks[7], proxblocks[8]])
 
     cursor.update()
     //console.log(cursor.position.x)
-    document.getElementById('cursor').style.top = cursor.position.y + 'px'
-    document.getElementById('cursor').style.left = cursor.position.x + 'px'
+    document.getElementById('cursor').style.top = (cursor.position.y*(reqlength/newlength)) + 'px'
+    document.getElementById('cursor').style.left = cursor.position.x*(reqlength/newlength) + 'px'
 }
 
 animate()

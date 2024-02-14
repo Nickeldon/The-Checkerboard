@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face { font-family: PixelifySans; src: url('./Addons/PixelifySans.ttf');}
+    </style>
+</head>
+<body style="width: 590px; height:700px; background-color:transparent; overflow:hidden">
+    <audio src="./Addons/musics/bg-music-set.aac" style="visibility:hidden;" autoplay></audio>
+    <iframe src="./menu.html" frameborder="0"></iframe>
+</body>
+<style>
+    *{
+        user-select: none; 
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-family: PixelifySans, sans-serif;
+        margin: auto;
+        width: 590px; height:700px; background-color:transparent; overflow:hidden;
+        filter: grayscale(5%);
+    }
+
+    .grayscale{
+        filter: grayscale(100%);
+    }
+</style>
+
+<script>
+    var data
+    function redir(map, target){
+        if(target === 1){
+        data = map
+        document.querySelector('iframe').src = './index.html'}
+        else if(target === 2){
+            document.querySelector('iframe').src = './menu.html'
+        }
+    }
+
+    function getData(){
+        if(!data){
+            data = 'Map1'
+        }
+        return data
+    }
+</script>
+</html>

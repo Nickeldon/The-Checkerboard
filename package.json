@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "electron": "^28.2.2",
+    "electron": "^28.2.3",
     "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1",
     "url": "^0.11.3"
@@ -10,7 +10,7 @@
   "main": "electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --prune=true --out=TheCheckerBoard-V1.6.0"
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --prune=true --out=TheCheckerBoard-V2.5.0"
   },
   "author": "Nickeldon",
   "license": "ISC",

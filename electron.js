@@ -9,8 +9,8 @@ let win = null
 
 function createWindow(){
     win = new BrowserWindow({
-      width: 596,
-      height: 700,
+      width: 589,
+      height: 695,
       alwaysOnTop: false,
       maximizable: false,
       minimizable: false,

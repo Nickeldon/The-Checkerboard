@@ -7,6 +7,11 @@
 </body>
 
 <style>
+
+  *{
+    user-select: none;
+  }
+
     body {
         --s: 25vmin;
         --p: calc(var(--s) / 2);
@@ -14,7 +19,7 @@
         --c2: rgb(29, 100, 172);
         --c3: black;
         --bg: var(--c3);
-        --d: 5000ms;
+        --d: 8000ms;
         --e: cubic-bezier(0.76, 0, 0.24, 1);
         
         background-color: black;
@@ -94,6 +99,27 @@
       }
 </style>
 <script>
+  var r = document.querySelector('body');
+const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+
+function getCharacter(index) {
+	return hexCharacters[index]
+}
+
+function generateNewColor() {
+	let hexColorRep = "#"
+
+	for (let index = 0; index < 6; index++){
+		const randomPosition = Math.floor ( Math.random() * hexCharacters.length ) 
+    	hexColorRep += getCharacter( randomPosition )
+	}
+	
+	return hexColorRep
+}
+
+  r.style.setProperty('--c1', generateNewColor());
+  r.style.setProperty('--c2', generateNewColor());
+
   var keycombos = ""
 
 window.addEventListener('keydown', (event) => {

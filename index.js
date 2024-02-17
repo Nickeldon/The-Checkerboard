@@ -51,15 +51,28 @@ function chooser(action){
             }
                 break;
             case 5:{
-               document.getElementById('map-prev1').style.display = 'block'
-                document.getElementById('ch-id').innerHTML = 'Map 1'
-                choice = 1
+               document.getElementById('map-prev6').style.display = 'block'
+                document.getElementById('ch-id').innerHTML = 'Map 6'
+                choice = 6
             }break;
+
+            case 6:{
+                document.getElementById('map-prev1').style.display = 'block'
+                 document.getElementById('ch-id').innerHTML = 'Map 1'
+                 choice = 1
+             }break;
 
         }
     }
     else{
+        console.log(choice)
         switch(choice){
+            case 6:{
+                document.getElementById('map-prev5').style.display = 'block'
+                 document.getElementById('ch-id').innerHTML = 'Map 5'
+                 choice = 5
+             }break;
+
             case 5:{
                document.getElementById('map-prev4').style.display = 'block'
                 document.getElementById('ch-id').innerHTML = 'Map 4'
@@ -83,9 +96,9 @@ function chooser(action){
                 choice = 1}
                 break;
             case 1:{
-               document.getElementById('map-prev5').style.display = 'block'
-                document.getElementById('ch-id').innerHTML = 'Map 5'
-                choice = 5
+               document.getElementById('map-prev6').style.display = 'block'
+                document.getElementById('ch-id').innerHTML = 'Map 6'
+                choice = 6
             }break;
 
         }
@@ -106,10 +119,18 @@ function redirect(target){
         }break;
 
         case 3: {
-
+                document.getElementById('transition').style.display = 'block'
+                setTimeout(() => {
+                    document.getElementById('transition').style.opacity = '100%'
+                    setTimeout(() => {
+                        window.parent.stopProcess()
+                    }, 900)
+                }, 100)
+            
         }break;
 
         case 4: {
+            window.parent.triggerSelect()
             document.getElementById('main').style.transform = 'scale(10)'
             setTimeout(() => {
                 document.getElementById('transition').style.display = 'block'
@@ -123,3 +144,19 @@ function redirect(target){
         }break;
     }
 }
+
+window.addEventListener('keydown', (event) => {
+    var key
+
+    if(event.key.length === 1){
+    key = event.key.toLowerCase()}
+    else{
+        key = event.key
+    }
+    if(key === 'Escape' && document.getElementById('chooser').style.left === '0px'){
+        document.getElementById('chooser').style.left = '590px'
+            setTimeout(() => {
+                document.getElementById('chooser').style.display = 'none'        
+            }, 750)
+    }
+})

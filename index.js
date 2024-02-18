@@ -115,17 +115,24 @@ function redirect(target){
         }break;
 
         case 2: {
+            document.getElementById('instr').style.display = 'block'
 
+            setTimeout(() => {                           
+            window.parent.document.getElementById('drag').style.display = 'none'
+            document.getElementById('instr').style.opacity = '80%'
+            }, 100)
         }break;
 
         case 3: {
-                document.getElementById('transition').style.display = 'block'
+
+            window.parent.musicswitch(600)
+            document.getElementById('transition').style.display = 'block'
+            setTimeout(() => {
+                document.getElementById('transition').style.opacity = '100%'
                 setTimeout(() => {
-                    document.getElementById('transition').style.opacity = '100%'
-                    setTimeout(() => {
-                        window.parent.stopProcess()
-                    }, 900)
-                }, 100)
+                    window.parent.stopProcess()
+                }, 900)
+            }, 100)
             
         }break;
 
@@ -153,10 +160,22 @@ window.addEventListener('keydown', (event) => {
     else{
         key = event.key
     }
-    if(key === 'Escape' && document.getElementById('chooser').style.left === '0px'){
+    if(key === 'Escape'){
         document.getElementById('chooser').style.left = '590px'
             setTimeout(() => {
                 document.getElementById('chooser').style.display = 'none'        
             }, 750)
+
+        document.getElementById('instr').style.opacity = '0%'
+
+        setTimeout(() => {
+            window.parent.document.getElementById('drag').style.display = 'block'
+            document.getElementById('instr').style.display = 'none'
+            document.getElementById('page1').style.opacity = '100%'
+            document.getElementById('page2').style.display = 'none'
+            document.getElementById('page2').style.opacity = '0%'
+            document.getElementById('page1').style.display = 'block'
+            document.getElementById('instr-state').innerHTML = 'Continue'
+        }, 900)
     }
 })

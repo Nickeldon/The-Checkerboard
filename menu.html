@@ -10,6 +10,7 @@
 </head>
 <body style="overflow:hidden; width: 590px; height:700px; margin:auto;">
     <div class="main" id="main">
+        
         <div style="position: absolute; width: 100%; height: 100%;">
             <object data="./Addons/bg.html" type="text/html" style="width: 590px; height: 700px; background-color: transparent; opacity:70%; filter:brightness(50%)"></object>
         </div>
@@ -22,18 +23,147 @@
                 <a onclick="redirect(3)" onmouseover="playSound(1)">Quit</a>
             </div>
         </div>
-        <div class="instr" id="instr" style="opacity: 80%; background-color:black; width:590px; height:700px; display:none;">
-            <div>
+        <div class="instr" id="instr" style="opacity: 0%; background-color:black; width:590px; height:700px; display:none; transition:all .9s ease-out;">
+            
+            <h1 style="position: absolute; color:white; top: 100px; margin:auto; left: 32%">
+                Instructions
+            </h1>
 
+            <div id="page1" style="opacity: 100%; transition:all .5s ease-out; display:block;">
+                <div onmouseover="
+            if(document.getElementById('block1').style.left === '10%'){
+                document.getElementById('block1').style.transition = 'all 2s ease-in-out'
+                console.log(document.getElementById('block1').style.left)
+                document.getElementById('block1').style.left = '100%'
+                document.getElementById('block2').style.transition = 'all .1s ease-out'
+               blck2 = setTimeout(() => {
+                    document.getElementById('block2').style.backgroundColor = 'purple'
+                },700)}
+                
+            " onmouseleave="
+            clearTimeout(blck2)
+            document.getElementById('block2').style.transition = 'all 0s ease-out'
+            document.getElementById('block2').style.backgroundColor = 'blue'
+            document.getElementById('block1').style.transition = 'all 0s ease-out'
+            document.getElementById('block1').style.left = '10%'
+            " class="frame1" id="frame1" style="position: absolute; height: 60px; width:100%; top:30%;">
+                <div id="block1" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
+                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
+                    When the cursor passes through a blue normal block, the block becomes purple
+                </p>  
+                
+                <div id="block2" class="purple-block" style="background-color:blue; right: 45%;"></div>
             </div>
-            <div>
 
+            
+            <div onmouseover="
+            if(document.getElementById('block3').style.left === '10%'){
+                document.getElementById('block3').style.transition = 'all 2s ease-in-out'
+                console.log(document.getElementById('block1').style.left)
+                document.getElementById('block3').style.left = '100%'
+                document.getElementById('block4').style.transition = 'all .1s ease-out'
+               blck4 = setTimeout(() => {
+                    document.getElementById('block4').style.borderColor = 'gray'
+                    document.getElementById('block4').style.backgroundColor = 'black'
+                },700)}
+                
+            " onmouseleave="
+            clearTimeout(blck4)
+            document.getElementById('block4').style.transition = 'all 0s ease-out'
+            document.getElementById('block4').style.backgroundColor = 'purple'
+            document.getElementById('block3').style.transition = 'all 0s ease-out'
+            document.getElementById('block3').style.left = '10%'
+            " class="frame2" id="frame2" style="position: absolute; height: 60px; width:100%; top:60%;">
+                <div id="block3" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
+                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
+                    When the cursor passes through a purple block, the block becomes black. <br> You may no longer pass through it
+                </p>  
+                
+                <div id="block4" class="purple-block" style="background-color:purple; right: 45%; border-style:solid; border-width:1px;"></div>
             </div>
-            <div>
+            </div>
 
+            <div id="page2" style="opacity: 0%; transition:all .5s ease-out; display:none;">
+                <div onmouseover="
+            if(document.getElementById('block5').style.left === '10%'){
+                document.getElementById('block5').style.transition = 'all 2s ease-in-out'
+                console.log(document.getElementById('block5').style.left)
+                document.getElementById('block5').style.left = '100%'
+                document.getElementById('block6').style.transition = 'all .1s ease-out'
+               blck2 = setTimeout(() => {
+                    document.getElementById('block6').style.backgroundColor = 'green'
+                },700)}
+                
+            " onmouseleave="
+            clearTimeout(blck2)
+            document.getElementById('block6').style.transition = 'all 0s ease-out'
+            document.getElementById('block6').style.backgroundColor = 'blue'
+            document.getElementById('block5').style.transition = 'all 0s ease-out'
+            document.getElementById('block5').style.left = '10%'
+            " class="frame1" id="frame1" style="position: absolute; height: 60px; width:100%; top:30%;">
+                <div id="block5" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
+                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
+                    When the cursor passes through a blue special block, the block becomes a money block <br> You must pass through the money block a second time to recolt it
+                </p>  
+                
+                <div id="block6" class="purple-block" style="background-color:blue; right: 45%;"></div>
             </div>
-            <a>
-                Continue
+
+            
+            <div onmouseover="
+            if(document.getElementById('block7').style.left === '10%'){
+                document.getElementById('block7').style.transition = 'all 2s ease-in-out'
+                document.getElementById('block7').style.left = '100%'
+                document.getElementById('block8').style.transition = 'all .1s ease-out'
+               blck4 = setTimeout(() => {
+                    document.getElementById('block8').style.backgroundColor = 'purple'
+                },700)}
+                
+            " onmouseleave="
+            clearTimeout(blck4)
+            document.getElementById('block8').style.transition = 'all 0s ease-out'
+            document.getElementById('block8').style.backgroundColor = 'green'
+            document.getElementById('block7').style.transition = 'all 0s ease-out'
+            document.getElementById('block7').style.left = '10%'
+            " class="frame2" id="frame2" style="position: absolute; height: 60px; width:100%; top:60%;">
+
+                <div id="block7" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
+                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
+                    When the cursor passes through a money block, the block becomes a purple block. <br> You have now recolted the money block
+                </p>  
+                
+                <div id="block8" class="purple-block" style="background-color:green; right: 45%; border-style:solid; border-width:1px;"></div>
+            </div>
+            </div>
+
+            <a style="width: 100%; height: 16px; text-decoration:none; position:absolute; bottom: 10%; text-align:center;">
+               <span id="instr-state" class="instr-state" style="font-size:16px; color:white;" onclick="
+               
+               if(document.getElementById('instr-state').innerHTML === 'Continue'){
+                    document.getElementById('page1').style.opacity = '0%'
+                    document.getElementById('page2').style.display = 'block'
+                    setTimeout(() => {
+                        document.getElementById('page1').style.display = 'none'
+                        document.getElementById('page2').style.opacity = '100%'
+
+                        document.getElementById('instr-state').innerHTML = 'Finish'
+                    }, 500)}
+
+                    else{
+                        document.getElementById('instr').style.opacity = '0%'
+
+                        setTimeout(() => {
+                            window.parent.document.getElementById('drag').style.display = 'block'
+                            document.getElementById('instr').style.display = 'none'
+                            document.getElementById('page1').style.opacity = '100%'
+                            document.getElementById('page2').style.display = 'none'
+                            document.getElementById('page2').style.opacity = '0%'
+                            document.getElementById('page1').style.display = 'block'
+                            document.getElementById('instr-state').innerHTML = 'Continue'
+                        }, 900)
+                    }
+
+               ">Continue</span>
             </a>
         </div>
 
@@ -67,17 +197,60 @@
             </div>
         </div>
     
-        <i class="gg-disc" id="music-disc" onclick="musicswitch()" style="position: absolute; filter:invert(100%) brightness(70%); bottom: 30px; left: 30px; transform:scale(1.9); transition:all 1s ease-out;"></i>
+        <i class="gg-disc" id="music-disc" onclick="musicswitch(400)" style="position: absolute; filter:invert(100%) brightness(70%); bottom: 30px; left: 30px; transform:scale(1.9); transition:all 1s ease-out;"></i>
 
-<div id="transition" style="display: none; opacity:0%; background-color:black; position:absolute; top:0; margin:auto; transition:all 1s ease-out; z-index:99; width:100%; height:100%;">
-
-</div>
+        <p style="color: white; position:absolute; bottom:0; font-size: 13px">
+            TheCheckerBoard V3.6.5-beta
+        </p>
+<div id="transition" style="display: none; opacity:0%; background-color:black; position:absolute; top:0; margin:auto; transition:all 1s ease-out; z-index:99; width:100%; height:100%;"></div>
     </div>
 </body>
 <style>
 
+    .instr-state:hover{
+        cursor: pointer;
+    }
+
+    .blue-block{
+        position: absolute;
+        width:60px;
+        height: 60px;
+        background-color: gray;
+        animation: blink .5s alternate-reverse infinite;;
+    }
+
+    .red-block{
+        position: absolute;
+        width:60px;
+        height: 60px;
+        background-color: red;
+    }
+
+    .purple-block{
+        position: absolute;
+        width:60px;
+        height: 60px;
+        background-color: purple;
+    }
+
+    .green-block{
+        position: absolute;
+        width:60px;
+        height: 60px;
+        background-color: greenyellow;
+    }
+
     .anim-rotate{
         animation: rotate 2s infinite;
+    }
+
+    @keyframes translation-x {
+        from{
+            left:10%
+        }
+        to{
+            left:100%
+        }
     }
 
     @keyframes rotate {
@@ -86,6 +259,15 @@
         }
         to{
             transform: rotate(360deg) scale(1.9);
+        }
+    }
+
+    @keyframes blink {
+        from{
+            opacity: 100%;
+        }
+        to{
+            opacity: 40%;
         }
     }
 
@@ -136,6 +318,7 @@
     }
 
     *{
+        font-family: PixelifySans, sans-serif;
         user-select: none; 
         margin: 0;
         padding: 0;
@@ -187,6 +370,10 @@
 <script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
 <script src="index.js"></script>
 <script>
+    var blck2
+    var blck4
+    var blck6
+    var blck8
     var isplaying = true
     document.getElementById('music-disc').classList.add('anim-rotate')
 

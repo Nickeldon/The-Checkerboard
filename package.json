@@ -10,7 +10,7 @@
   "main": "electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --prune=true --out=TheCheckerBoard-V2.5.0"
+    "package-win": "electron-packager . --overwrite --platform=win32 --icon=Addons/TheCB-icon.ico --arch=ia32 --prune=true --out=TheCheckerBoard-V3.5.0"
   },
   "author": "Nickeldon",
   "license": "ISC",

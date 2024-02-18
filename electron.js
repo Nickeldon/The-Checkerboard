@@ -16,7 +16,7 @@ function createWindow(){
       minimizable: false,
       center: true,
       autoHideMenuBar: true,
-      resizable: false,
+      resizable: true,
       fullscreenable: false,
       frame: false,
       titleBarStyle: 'hidden',
@@ -36,11 +36,20 @@ function createWindow(){
       })
       const [w, h] = win.getSize();
       win.setSize(w, h);
+
+      win.on('resize', function () {
+        setTimeout(function () {
+          var size = win.getSize();
+          win.setSize(size[0], parseInt(size[0] * 10.6 / 9));
+        }, 0);
+      });
+    
   }
   
   
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
   })
-  
+
+ 
   app.on('ready', createWindow);

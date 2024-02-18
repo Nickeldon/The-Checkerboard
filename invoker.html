@@ -8,9 +8,13 @@
         @font-face { font-family: PixelifySans; src: url('./Addons/PixelifySans.ttf');}
     </style>
 </head>
-<body style="width: fit-content; height:fit-content; background-color:black; overflow:hidden">
+<body style="width: fit-content; height:fit-content; background-color:black; overflow:hidden; transform-origin:0 0;">
     <audio src="./Addons/musics/rain.aac" autoplay loop id="rain-audio" style="visibility:hidden; transition:all 2s ease-out;"></audio>
-    <audio src="./Addons/musics/bg-music-set-2.aac" style="visibility:hidden; transition:all 2s ease-out;" autoplay loop id="bg-audio"></audio>
+    <audio src="./Addons/musics/bg-music-set-2.aac" style="visibility:hidden; transition:all 2s ease-out;" autoplay id="bg-audio" onended="
+    audiopos++
+    if(audiopos >= musicarray.length){audiopos = 0}
+    document.getElementById('bg-audio').src = musicarray[audiopos]
+    "></audio>
     <div class="drag" id="drag"></div>
     <iframe src="./menu.html" frameborder="0"></iframe>
 </body>
@@ -23,18 +27,17 @@
         border: 0;
         outline: 0;
         font-family: PixelifySans, sans-serif;
-        margin: auto;
         width: 590px; height:700px; background-color:transparent; overflow:hidden;
         filter: grayscale(5%) sepia(10%);
     }
 
     .drag{
-        user-select: none;
         -webkit-app-region: drag;
         background-color: transparent;
         position: absolute;
         z-index: 99;
         width: 100%;
+        display: block;
         height:350px
     }
 
@@ -47,6 +50,29 @@
 <script src="./Addons/Packages/JQuery 3.1.1/jquery-3.1.1.min.js"></script>
 <script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
 <script>
+    var reqres = {
+        x: 592
+    }
+
+    var givenres = {
+        x: window.innerWidth
+    }
+
+
+    setInterval(() => {
+        var givenres = {
+            x: window.innerWidth,
+        }
+        document.querySelector('body').style.transform = `scale(${givenres.x/reqres.x})`
+    }, 10)
+    var audiopos = 0
+    var musicarray = [
+    './Addons/musics/bg-music-set-2.aac',
+    './Addons/musics/HARMONY.aac',
+    './Addons/musics/SILENCE.aac',
+    './Addons/musics/SMOOTH.aac',
+    './Addons/musics/WATER-WALKING.aac'
+    ]
     var audioenable = true;
     var select = new Howl({
         src: ['./Addons/musics/select.mp3'],
@@ -66,32 +92,19 @@
         }
     }
 
-    function musicswitch(){
-        /*console.log('yes')
-        if(audioenable){
-            audioenable = false
-            document.getElementById('bg-audio').pause()
-            document.getElementById('rain-audio').pause()
-        }
-        else{
-            audioenable = true
-            console.log('passed')
-            document.getElementById('bg-audio').play()
-            document.getElementById('rain-audio').play()
-        }*/
-
+    function musicswitch(Timeout){
        var bgaudio = document.getElementById('bg-audio')
        var rain = document.getElementById('rain-audio')
         if (audioenable) {  
             //relevant part to fading in audio
             bgaudio.volume = 0.1;
-            $('#bg-audio').animate({volume: 0}, 400, () => {
+            $('#bg-audio').animate({volume: 0}, Timeout, () => {
                 
             bgaudio.pause();
             });
 
             rain.volume = 0.05;
-            $('#rain-audio').animate({volume: 0}, 400, () => {
+            $('#rain-audio').animate({volume: 0}, Timeout, () => {
                 rain.pause();
             });
             

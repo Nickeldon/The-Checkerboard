@@ -8,6 +8,8 @@ var casecount = 0
 var moneycount = 0
 var iteration = 0
 var looptime = 10
+var initx = 5
+var inity = 0
 var hover = new Howl({
     src: ['./Addons/musics/move.mp3'],
     volume: 5,
@@ -25,12 +27,16 @@ var lost = new Howl({
         map4: 0,
         map5: 0,
         map6: 0,
+        map7: 0,
+        map8: 0,
     }
 
 if(!localStorage.getItem("best-scores")){
     localStorage.setItem("best-scores", JSON.stringify(bests))
 } else{
     bests = JSON.parse(localStorage.getItem("best-scores"))
+
+    console.log(bests)
 }
 
 document.getElementById('transition').style.display = 'block'
@@ -142,29 +148,6 @@ var map1 = [
     [ 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2' ]
 ]
 
-
-  var map7 = [
-    ['C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2'],
-    ['C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C1', 'C2', 'C1', 'C3', 'C1', 'C2', 'C1', 'C2', 'C1', 'C3', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C1', 'C2', 'C3', 'C1', 'C1', 'C2', 'C1', 'C2', 'C1', 'C3', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],
-    ['C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2'],]
-  
     var map9 = [
         ['C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C3', 'C2'],
         ['C1', 'C3', 'C3', 'C2', 'C1', 'C1', 'C2', 'C1', 'C2', 'C3', 'C3', 'C2', 'C1', 'C2', 'C1', 'C1', 'C2', 'C1', 'C3', 'C3'],
@@ -187,7 +170,50 @@ var map1 = [
         ['C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C3', 'C3', 'C1'],
         ['C2', 'C3', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2'],]
     
-
+        var map10 = [
+            ['C1', 'C3', 'C1', 'C1', 'C1', 'C1', 'C3', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1',],
+            ['C3', 'C3', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1',],
+            ['C1', 'C1', 'C3', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1',],
+            ['C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C3', 'C2', 'C3', 'C1', 'C1', 'C2', 'C1',],
+            ['C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C3', 'C2', 'C3', 'C3', 'C2', 'C2', 'C1',],
+            ['C3', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1',],
+            ['C3', 'C3', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1',],
+            ['C2', 'C2', 'C2', 'C2', 'C3', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2',],
+            ['C1', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C2', 'C1', 'C3', 'C2', 'C1', 'C1', 'C1', 'C3', 'C2', 'C2', 'C2', 'C1',],
+            ['C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C3', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1',],
+            ['C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C3', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1',],
+            ['C1', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C2', 'C3', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1',],
+            ['C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2',],
+            ['C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C1',],
+            ['C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1',],
+            ['C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C2', 'C3', 'C1', 'C2', 'C2', 'C1',],
+            ['C1', 'C2', 'C3', 'C1', 'C1', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C2', 'C1',],
+            ['C3', 'C1', 'C3', 'C3', 'C2', 'C2', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1',],
+            ['C3', 'C1', 'C1', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C3', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1',],
+            ['C3', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C3', 'C3', 'C1', 'C1', 'C1', 'C1', 'C3',],]
+        
+            var map11 = [
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C1', 'C3', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C3', 'C1', 'C2', 'C2', 'C2', 'C3', 'C3', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C1', 'C3', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C3', 'C2', 'C2', 'C3', 'C3', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C3', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C3', 'C3', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C3', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C3', 'C3', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C3', 'C3', 'C3', 'C3', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C1', 'C1', 'C1', 'C3', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C1', 'C3', 'C2', 'C1', 'C1', 'C3', 'C1', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C1', 'C1', 'C1', 'C1', 'C3', 'C3', 'C2', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C3', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C3', 'C1', 'C1', 'C1', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],
+                ['C2', 'C2', 'C2', 'C2', 'C1', 'C3', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2', 'C2',],]
+            
   switch(data){
     case 'Map 1': {
         map = map2; document.getElementById('prev-highest').innerHTML = bests.map1
@@ -213,10 +239,22 @@ var map1 = [
         map = map9; document.getElementById('prev-highest').innerHTML = bests.map6
     }break;
 
+    case 'Map 7': {
+        console.log(bests.map7)
+        map = map10; document.getElementById('prev-highest').innerHTML = bests.map7
+    }break;
+
+    case 'Map 8': {
+        map = map11; document.getElementById('prev-highest').innerHTML = bests.map8
+        initx = initx + (10*45)
+        inity = inity + (11*45)
+    }break;
+
     default: {
         map = map2; document.getElementById('prev-highest').innerHTML = bests.map1
     }
   }
+
 
   var newheight = map.length
   var newlength = map[0].length
@@ -267,8 +305,8 @@ class cursors{
 
 const cursor = new cursors({
     position: {
-        x: 5,
-        y: 0
+        x: initx,
+        y: inity
     }
 })
 
@@ -480,7 +518,6 @@ function getProximityblocks(){
 function handleFinish(blocks, money, data, moves){
 
     var passed = handleWin(money, data, moves)
-    console.log(handleWin(money, data, moves))
     var cnt = 0;
     blocks.forEach((elem) => {
         if(!elem || elem.type === 'black'){
@@ -520,6 +557,8 @@ function handleWin(moneycnt, mapnum, moves){
         case 4: {condition = 12; prevbest = bests.map4} break;
         case 5: {condition = 16; prevbest = bests.map5} break;
         case 6: {condition = 40; prevbest = bests.map6} break;
+        case 7: {condition = 35; prevbest = bests.map7} break;
+        case 8: {condition = 33; prevbest = bests.map8} break;
     }
 
     if(moneycnt >= condition){
@@ -531,6 +570,8 @@ function handleWin(moneycnt, mapnum, moves){
                 case 4: {newscore = true; bests.map4 = moves} break;
                 case 5: {newscore = true; bests.map5 = moves} break;
                 case 6: {newscore = true; bests.map6 = moves} break;
+                case 7: {newscore = true; bests.map7 = moves} break;
+                case 8: {newscore = true; bests.map8 = moves} break;
             }
 
             localStorage.setItem("best-scores", JSON.stringify(bests))
@@ -582,11 +623,6 @@ function animate(){
         else if(keypressed.s.press) press = 's'
     }
 
-    /*if(keypressed.a.press) press = 'a'
-        else if(keypressed.d.press) press = 'd'
-        else if(keypressed.w.press) press = 'w'
-        else if(keypressed.s.press) press = 's'
-*/
     const proxblocks = getProximityblocks()
     //console.log(proxblocks)
     try {

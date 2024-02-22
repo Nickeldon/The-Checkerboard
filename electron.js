@@ -21,6 +21,8 @@ function createWindow(){
       frame: false,
       titleBarStyle: 'hidden',
       transparent: true,
+      minWidth:400,
+      maxWidth:1000,
     });
     win.loadURL(url.format(path.join(__dirname, '/invoker.html')));  
     //win.webContents.openDevTools()
@@ -40,7 +42,7 @@ function createWindow(){
       win.on('resize', function () {
         setTimeout(function () {
           var size = win.getSize();
-          win.setSize(size[0], parseInt(size[0] * 10.6 / 9));
+          win.setSize(size[0], parseInt(size[0] * 10.61969 / 9));
         }, 0);
       });
     

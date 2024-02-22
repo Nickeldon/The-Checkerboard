@@ -3,6 +3,7 @@
     "electron": "^28.2.3",
     "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1",
+    "typescript": "^5.3.3",
     "url": "^0.11.3"
   },
   "name": "damier",
@@ -10,7 +11,8 @@
   "main": "electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-win": "electron-packager . --overwrite --platform=win32 --icon=Addons/TheCB-icon.ico --arch=ia32 --prune=true --out=TheCheckerBoard-V3.5.0"
+    "package-win": "electron-packager . --overwrite --platform=win32 --icon=Addons/TheCB-icon.ico --arch=ia32 --prune=true --out=TheCheckerBoard-V3.5.0",
+    "start": "live-server"
   },
   "author": "Nickeldon",
   "license": "ISC",

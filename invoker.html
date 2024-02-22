@@ -9,16 +9,57 @@
     </style>
 </head>
 <body style="width: fit-content; height:fit-content; background-color:black; overflow:hidden; transform-origin:0 0;">
+
     <audio src="./Addons/musics/rain.aac" autoplay loop id="rain-audio" style="visibility:hidden; transition:all 2s ease-out;"></audio>
-    <audio src="./Addons/musics/bg-music-set-2.aac" style="visibility:hidden; transition:all 2s ease-out;" autoplay id="bg-audio" onended="
+    <audio src="" style="visibility:hidden; transition:all 2s ease-out;" autoplay id="bg-audio" onended="
     audiopos++
     if(audiopos >= musicarray.length){audiopos = 0}
     document.getElementById('bg-audio').src = musicarray[audiopos]
     "></audio>
     <div class="drag" id="drag"></div>
     <iframe src="./menu.html" frameborder="0"></iframe>
+
+    <div class="intro" id="intro" style="position:absolute; display:block; top:0; width:100%; height:100%; z-index:99; background-color:black; opacity:100%; transition:all 1s ease-in-out">
+
+        <div id="main-content" class="main-content" style="position: absolute;">
+            <i>
+                <img src="./Addons/headphones.png" style="position: absolute; left:30%; top:40%; transform:scale(0.3); height:600px; filter:invert(70%)">
+            </i>
+
+            <h1 style="position:absolute; width:100%; bottom:30%; text-align:center; color:white; height:fit-content; font-size:17px; font-weight:200">
+                Use headphones for better experience
+            </h1>
+        </div>
+    </div>
 </body>
 <style>
+
+    .main-content{
+        animation: fadetotop 2s;
+    }
+
+    @keyframes fadetotop {
+        from{
+            opacity: 0%;
+            top: 5%;
+        }   
+        to{
+            opacity: 70%;
+            top: 0;
+        }
+    }
+
+    @keyframes fadefrombottom {
+        from{
+            opacity: 70%;
+            top: 0;
+        }   
+        to{
+            opacity: 0%;
+            top: -5%;
+        }
+    }
+
     *{
         user-select: none; 
         margin: 0;
@@ -50,21 +91,6 @@
 <script src="./Addons/Packages/JQuery 3.1.1/jquery-3.1.1.min.js"></script>
 <script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
 <script>
-    var reqres = {
-        x: 592
-    }
-
-    var givenres = {
-        x: window.innerWidth
-    }
-
-
-    setInterval(() => {
-        var givenres = {
-            x: window.innerWidth,
-        }
-        document.querySelector('body').style.transform = `scale(${givenres.x/reqres.x})`
-    }, 10)
     var audiopos = 0
     var musicarray = [
     './Addons/musics/bg-music-set-2.aac',
@@ -73,13 +99,47 @@
     './Addons/musics/SMOOTH.aac',
     './Addons/musics/WATER-WALKING.aac'
     ]
-    var audioenable = true;
+
+
+    const randomtrack = musicarray[(Math.floor(Math.random() * musicarray.length))]
+    document.getElementById('bg-audio').src = randomtrack
+    console.log(randomtrack)
+
+
+
+    var audioenable = false;
+    musicswitch(null, 1500)
+
+    setTimeout(() => {
+        document.getElementById('main-content').style.animation = 'fadefrombottom 2s'
+        document.getElementById('intro').style.opacity = '0%'
+
+        setTimeout(() => {
+            document.getElementById('intro').style.display = 'none'
+        }, 1000)
+    }, 2500)
+
+    var reqres = {
+        x: 592
+    }
+
+    var givenres = {
+        x: window.innerWidth
+    }
+
+    var tempres = givenres.x
+
+    setInterval(() => {
+        var givenres = {
+            x: window.innerWidth,
+        }
+        if(Math.trunc(tempres / givenres) !== 1){
+        document.querySelector('body').style.transform = `scale(${givenres.x/reqres.x})`}
+    }, 10)
     var select = new Howl({
         src: ['./Addons/musics/select.mp3'],
         volume: 0.6,
       });
-    document.getElementById('bg-audio').volume = '0.1'
-    document.getElementById('rain-audio').volume = '0.05'
     var data
     function redir(map, target){
         if(target === 1){
@@ -92,7 +152,7 @@
         }
     }
 
-    function musicswitch(Timeout){
+    function musicswitch(Timeout, Timein){
        var bgaudio = document.getElementById('bg-audio')
        var rain = document.getElementById('rain-audio')
         if (audioenable) {  
@@ -112,11 +172,14 @@
             audioenable = false;
         } else {
             //relevant part to fading out audio
+            if(!Timein){
+                Timein = 300
+            }
             bgaudio.volume = 0;
-            $('#bg-audio').animate({volume: 0.1}, 300);
+            $('#bg-audio').animate({volume: 0.1}, Timein);
 
             rain.volume = 0
-            $('#rain-audio').animate({volume: 0.05}, 300);
+            $('#rain-audio').animate({volume: 0.05}, Timein);
             rain.play();
             bgaudio.play();
             audioenable = true;

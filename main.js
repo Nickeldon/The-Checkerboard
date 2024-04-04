@@ -366,44 +366,28 @@ window.addEventListener('keydown', (event) => {
         key = event.key
     }
 
-    switch(key){
-        case 'ArrowUp': {
-            keypressed.w.press = true
-        }break;
-
-        case 'ArrowDown': {
-            keypressed.s.press = true
-        }break;
-
-        case 'ArrowLeft':{
-            keypressed.a.press = true
-        }break;
-
-        case 'ArrowRight': {
-            keypressed.d.press = true
-        }break;
-
-        case 'Escape': {
-            console.log('yes')
-
-            if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
-            ispaused = true
-            document.getElementById('pause-game').style.display = 'block'
-
-            setTimeout(() => {
-                document.getElementById('pause-game').style.opacity = '80%'
-            }, 100)}
-            else{
-                ispaused = false
-                document.getElementById('pause-game').style.opacity = '0%'
-                setTimeout(() => {
-                    document.getElementById('pause-game').style.display = 'none'
-            }, 500)
-            }
-        }break;
-
-        case 'p': {
-            if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
+    if(!ispaused){
+        switch(key){
+            case 'ArrowUp': {
+                keypressed.w.press = true
+            }break;
+    
+            case 'ArrowDown': {
+                keypressed.s.press = true
+            }break;
+    
+            case 'ArrowLeft':{
+                keypressed.a.press = true
+            }break;
+    
+            case 'ArrowRight': {
+                keypressed.d.press = true
+            }break;
+    
+            case 'Escape': {
+                console.log('yes')
+    
+                if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
                 ispaused = true
                 document.getElementById('pause-game').style.display = 'block'
     
@@ -417,12 +401,40 @@ window.addEventListener('keydown', (event) => {
                         document.getElementById('pause-game').style.display = 'none'
                 }, 500)
                 }
-        }break;
-
-        default: {
-            console.log('invalid keypress')
+            }break;
+    
+            case 'p': {
+                if(document.getElementById('pause-game').style.display !== 'block' || ispaused === false){
+                    ispaused = true
+                    document.getElementById('pause-game').style.display = 'block'
+        
+                    setTimeout(() => {
+                        document.getElementById('pause-game').style.opacity = '80%'
+                    }, 100)}
+                    else{
+                        ispaused = false
+                        document.getElementById('pause-game').style.opacity = '0%'
+                        setTimeout(() => {
+                            document.getElementById('pause-game').style.display = 'none'
+                    }, 500)
+                    }
+            }break;
+    
+            default: {
+                console.log('invalid keypress')
+            }
         }
-    }}}
+    } else{
+        if(key === 'Escape' || key === 'p'){
+            ispaused = false
+            document.getElementById('pause-game').style.opacity = '0%'
+            setTimeout(() => {
+                document.getElementById('pause-game').style.display = 'none'
+            }, 500)
+        }
+    
+    }
+}}
 })
 
 var keypressed = {

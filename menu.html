@@ -383,12 +383,12 @@
     function musicswitch(){
         if(isplaying){
             isplaying = false
-            document.getElementById('music-disc').classList.remove('anim-rotate')
+            document.getElementById('music-disc').style.animationPlayState = 'paused'
             window.parent.musicswitch()
         }
         else{
             isplaying = true
-            document.getElementById('music-disc').classList.add('anim-rotate')
+            document.getElementById('music-disc').style.animationPlayState = 'running'
             window.parent.musicswitch()
         }
         

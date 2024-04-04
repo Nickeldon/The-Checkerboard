@@ -3,7 +3,7 @@ const {app, BrowserWindow} = electron
 const url = require('url')
 const path = require('path');
 
-require('electron-reload')(__dirname,{electron: path.join(__dirname, 'node_modules', '.bin', 'electron')})
+//require('electron-reload')(__dirname,{electron: path.join(__dirname, 'node_modules', '.bin', 'electron')})
 
 let win = null
 

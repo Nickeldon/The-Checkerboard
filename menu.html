@@ -1,36 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        @font-face { font-family: PixelifySans; src: url('./Addons/PixelifySans.ttf');}
+      @font-face {
+        font-family: PixelifySans;
+        src: url("./Addons/PixelifySans.ttf");
+      }
     </style>
-</head>
-<body style="overflow:hidden; width: 590px; height:700px; margin:auto;">
+  </head>
+  <body style="overflow: hidden; width: 590px; height: 700px; margin: auto">
     <div class="main" id="main">
-        
-        <div style="position: absolute; width: 100%; height: 100%;">
-            <object data="./Addons/bg.html" type="text/html" style="width: 590px; height: 700px; background-color: transparent; opacity:70%; filter:brightness(50%)"></object>
-        </div>
-        <div class="scrmain" id="scrmain">
-            <h1 class="title" style="font-size: 60px; text-align:left; color:silver; margin-left: 55px; position:absolute; margin-top: 60px; font-family: PixelifySans, sans-serif; font-weight:400"><span>The</span> <br> CheckerBoard</h1>
+      <div style="position: absolute; width: 100%; height: 100%">
+        <object
+          data="./Addons/bg.html"
+          type="text/html"
+          style="
+            width: 590px;
+            height: 700px;
+            background-color: transparent;
+            opacity: 70%;
+            filter: brightness(50%);
+          "
+        ></object>
+      </div>
+      <div class="scrmain" id="scrmain">
+        <h1
+          class="title"
+          style="
+            font-size: 60px;
+            text-align: left;
+            color: silver;
+            margin-left: 55px;
+            position: absolute;
+            margin-top: 60px;
+            font-family: PixelifySans, sans-serif;
+            font-weight: 400;
+          "
+        >
+          <span>The</span> <br />
+          CheckerBoard
+        </h1>
 
-            <div class="options" id="options" style="text-align: center; position:absolute; right: 120px; bottom: 170px">
-                <a onclick="redirect(1)" onmouseover="playSound(1)">Play</a>
-                <a onclick="redirect(2)" onmouseover="playSound(1)">Instructions</a>
-                <a onclick="redirect(3)" onmouseover="playSound(1)">Quit</a>
-            </div>
+        <div
+          class="options"
+          id="options"
+          style="
+            text-align: center;
+            position: absolute;
+            right: 120px;
+            bottom: 170px;
+          "
+        >
+          <a onclick="redirect(1)" onmouseover="playSound(1)">Play</a>
+          <a onclick="redirect(2)" onmouseover="playSound(1)">Instructions</a>
+          <a onclick="redirect(3)" onmouseover="playSound(1)">Quit</a>
         </div>
-        <div class="instr" id="instr" style="opacity: 0%; background-color:black; width:590px; height:700px; display:none; transition:all .9s ease-out;">
-            
-            <h1 style="position: absolute; color:white; top: 100px; margin:auto; left: 32%">
-                Instructions
-            </h1>
+      </div>
+      <div
+        class="instr"
+        id="instr"
+        style="
+          opacity: 0%;
+          background-color: black;
+          width: 590px;
+          height: 700px;
+          display: none;
+          transition: all 0.9s ease-out;
+        "
+      >
+        <h1
+          style="
+            position: absolute;
+            color: white;
+            top: 100px;
+            margin: auto;
+            left: 32%;
+          "
+        >
+          Instructions
+        </h1>
 
-            <div id="page1" style="opacity: 100%; transition:all .5s ease-out; display:block;">
-                <div onmouseover="
+        <div
+          id="page1"
+          style="opacity: 100%; transition: all 0.5s ease-out; display: block"
+        >
+          <div
+            onmouseover="
             if(document.getElementById('block1').style.left === '10%'){
                 document.getElementById('block1').style.transition = 'all 2s ease-in-out'
                 console.log(document.getElementById('block1').style.left)
@@ -40,23 +98,46 @@
                     document.getElementById('block2').style.backgroundColor = 'purple'
                 },700)}
                 
-            " onmouseleave="
+            "
+            onmouseleave="
             clearTimeout(blck2)
             document.getElementById('block2').style.transition = 'all 0s ease-out'
             document.getElementById('block2').style.backgroundColor = 'blue'
             document.getElementById('block1').style.transition = 'all 0s ease-out'
             document.getElementById('block1').style.left = '10%'
-            " class="frame1" id="frame1" style="position: absolute; height: 60px; width:100%; top:30%;">
-                <div id="block1" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
-                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
-                    When the cursor passes through a blue normal block, the block becomes purple
-                </p>  
-                
-                <div id="block2" class="purple-block" style="background-color:blue; right: 45%;"></div>
-            </div>
+            "
+            class="frame1"
+            id="frame1"
+            style="position: absolute; height: 60px; width: 100%; top: 30%"
+          >
+            <div
+              id="block1"
+              class="blue-block"
+              style="left: 10%; transition: all 2s ease-in-out"
+            ></div>
+            <p
+              style="
+                color: white;
+                position: absolute;
+                bottom: -40px;
+                font-size: 13px;
+                width: 100%;
+                text-align: center;
+              "
+            >
+              When the cursor passes through a blue normal block, the block
+              becomes purple
+            </p>
 
-            
-            <div onmouseover="
+            <div
+              id="block2"
+              class="purple-block"
+              style="background-color: blue; right: 45%"
+            ></div>
+          </div>
+
+          <div
+            onmouseover="
             if(document.getElementById('block3').style.left === '10%'){
                 document.getElementById('block3').style.transition = 'all 2s ease-in-out'
                 console.log(document.getElementById('block1').style.left)
@@ -67,24 +148,57 @@
                     document.getElementById('block4').style.backgroundColor = 'black'
                 },700)}
                 
-            " onmouseleave="
+            "
+            onmouseleave="
             clearTimeout(blck4)
             document.getElementById('block4').style.transition = 'all 0s ease-out'
             document.getElementById('block4').style.backgroundColor = 'purple'
             document.getElementById('block3').style.transition = 'all 0s ease-out'
             document.getElementById('block3').style.left = '10%'
-            " class="frame2" id="frame2" style="position: absolute; height: 60px; width:100%; top:60%;">
-                <div id="block3" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
-                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
-                    When the cursor passes through a purple block, the block becomes black. <br> You may no longer pass through it
-                </p>  
-                
-                <div id="block4" class="purple-block" style="background-color:purple; right: 45%; border-style:solid; border-width:1px;"></div>
-            </div>
-            </div>
+            "
+            class="frame2"
+            id="frame2"
+            style="position: absolute; height: 60px; width: 100%; top: 60%"
+          >
+            <div
+              id="block3"
+              class="blue-block"
+              style="left: 10%; transition: all 2s ease-in-out"
+            ></div>
+            <p
+              style="
+                color: white;
+                position: absolute;
+                bottom: -40px;
+                font-size: 13px;
+                width: 100%;
+                text-align: center;
+              "
+            >
+              When the cursor passes through a purple block, the block becomes
+              black. <br />
+              You may no longer pass through it
+            </p>
 
-            <div id="page2" style="opacity: 0%; transition:all .5s ease-out; display:none;">
-                <div onmouseover="
+            <div
+              id="block4"
+              class="purple-block"
+              style="
+                background-color: purple;
+                right: 45%;
+                border-style: solid;
+                border-width: 1px;
+              "
+            ></div>
+          </div>
+        </div>
+
+        <div
+          id="page2"
+          style="opacity: 0%; transition: all 0.5s ease-out; display: none"
+        >
+          <div
+            onmouseover="
             if(document.getElementById('block5').style.left === '10%'){
                 document.getElementById('block5').style.transition = 'all 2s ease-in-out'
                 console.log(document.getElementById('block5').style.left)
@@ -94,23 +208,47 @@
                     document.getElementById('block6').style.backgroundColor = 'green'
                 },700)}
                 
-            " onmouseleave="
+            "
+            onmouseleave="
             clearTimeout(blck2)
             document.getElementById('block6').style.transition = 'all 0s ease-out'
             document.getElementById('block6').style.backgroundColor = 'blue'
             document.getElementById('block5').style.transition = 'all 0s ease-out'
             document.getElementById('block5').style.left = '10%'
-            " class="frame1" id="frame1" style="position: absolute; height: 60px; width:100%; top:30%;">
-                <div id="block5" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
-                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
-                    When the cursor passes through a blue special block, the block becomes a money block <br> You must pass through the money block a second time to recolt it
-                </p>  
-                
-                <div id="block6" class="purple-block" style="background-color:blue; right: 45%;"></div>
-            </div>
+            "
+            class="frame1"
+            id="frame1"
+            style="position: absolute; height: 60px; width: 100%; top: 30%"
+          >
+            <div
+              id="block5"
+              class="blue-block"
+              style="left: 10%; transition: all 2s ease-in-out"
+            ></div>
+            <p
+              style="
+                color: white;
+                position: absolute;
+                bottom: -40px;
+                font-size: 13px;
+                width: 100%;
+                text-align: center;
+              "
+            >
+              When the cursor passes through a blue special block, the block
+              becomes a money block <br />
+              You must pass through the money block a second time to recolt it
+            </p>
 
-            
-            <div onmouseover="
+            <div
+              id="block6"
+              class="purple-block"
+              style="background-color: blue; right: 45%"
+            ></div>
+          </div>
+
+          <div
+            onmouseover="
             if(document.getElementById('block7').style.left === '10%'){
                 document.getElementById('block7').style.transition = 'all 2s ease-in-out'
                 document.getElementById('block7').style.left = '100%'
@@ -119,25 +257,66 @@
                     document.getElementById('block8').style.backgroundColor = 'purple'
                 },700)}
                 
-            " onmouseleave="
+            "
+            onmouseleave="
             clearTimeout(blck4)
             document.getElementById('block8').style.transition = 'all 0s ease-out'
             document.getElementById('block8').style.backgroundColor = 'green'
             document.getElementById('block7').style.transition = 'all 0s ease-out'
             document.getElementById('block7').style.left = '10%'
-            " class="frame2" id="frame2" style="position: absolute; height: 60px; width:100%; top:60%;">
+            "
+            class="frame2"
+            id="frame2"
+            style="position: absolute; height: 60px; width: 100%; top: 60%"
+          >
+            <div
+              id="block7"
+              class="blue-block"
+              style="left: 10%; transition: all 2s ease-in-out"
+            ></div>
+            <p
+              style="
+                color: white;
+                position: absolute;
+                bottom: -40px;
+                font-size: 13px;
+                width: 100%;
+                text-align: center;
+              "
+            >
+              When the cursor passes through a money block, the block becomes a
+              purple block. <br />
+              You have now recolted the money block
+            </p>
 
-                <div id="block7" class="blue-block" style="left: 10%; transition:all 2s ease-in-out"></div>
-                <p style="color: white; position:absolute; bottom:-40px; font-size: 13px; width:100%; text-align:center;">
-                    When the cursor passes through a money block, the block becomes a purple block. <br> You have now recolted the money block
-                </p>  
-                
-                <div id="block8" class="purple-block" style="background-color:green; right: 45%; border-style:solid; border-width:1px;"></div>
-            </div>
-            </div>
+            <div
+              id="block8"
+              class="purple-block"
+              style="
+                background-color: green;
+                right: 45%;
+                border-style: solid;
+                border-width: 1px;
+              "
+            ></div>
+          </div>
+        </div>
 
-            <a style="width: 100%; height: 16px; text-decoration:none; position:absolute; bottom: 10%; text-align:center;">
-               <span id="instr-state" class="instr-state" style="font-size:16px; color:white;" onclick="
+        <a
+          style="
+            width: 100%;
+            height: 16px;
+            text-decoration: none;
+            position: absolute;
+            bottom: 10%;
+            text-align: center;
+          "
+        >
+          <span
+            id="instr-state"
+            class="instr-state"
+            style="font-size: 16px; color: white"
+            onclick="
                
                if(document.getElementById('instr-state').innerHTML === 'Continue'){
                     document.getElementById('page1').style.opacity = '0%'
@@ -163,245 +342,483 @@
                         }, 900)
                     }
 
-               ">Continue</span>
-            </a>
-        </div>
+               "
+            >Continue</span
+          >
+        </a>
+      </div>
 
-        <div class="chooser" id="chooser" style="display: block; height:100%; width:100%; background-color:transparent; text-align:center; position:absolute; transition:all .7s ease-out; left:590px">
-            <div class="filter" style="width: 100%; height: 100%; background-color:black; opacity:80%; position:absolute; top:0"></div>
+      <div
+        class="chooser"
+        id="chooser"
+        style="
+          display: block;
+          height: 100%;
+          width: 100%;
+          background-color: transparent;
+          text-align: center;
+          position: absolute;
+          transition: all 0.7s ease-out;
+          left: 590px;
+        "
+      >
+        <div
+          class="filter"
+          style="
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 80%;
+            position: absolute;
+            top: 0;
+          "
+        ></div>
 
-            <div>
-                <h1 style="text-align: center; color:white; font-size: 50px; position:absolute; left:15%; top: 70px; font-family: PixelifySans, sans-serif; font-weight:400">Choose your map</h1>
+        <div>
+          <h1
+            style="
+              text-align: center;
+              color: white;
+              font-size: 50px;
+              position: absolute;
+              left: 15%;
+              top: 70px;
+              font-family: PixelifySans, sans-serif;
+              font-weight: 400;
+            "
+          >
+            Choose your map
+          </h1>
 
-                <div>
-                    <i style="height: 350px; margin:auto; margin-top:25%; filter:brightness(50%);">
-                        <img id="map-prev1" class="map-preview" src="./Addons/maps/map1.png" style="display:block;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev2" class="map-preview" src="./Addons/maps/map2.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev3" class="map-preview" src="./Addons/maps/map3.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev4" class="map-preview" src="./Addons/maps/map4.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev5" class="map-preview" src="./Addons/maps/map5.png" style="display:none;height: 350px; margin:auto; margin-top:25%; transform-origin:0 0; margin-left:-15px">
-                        <img id="map-prev6" class="map-preview" src="./Addons/maps/map6.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev7" class="map-preview" src="./Addons/maps/map7.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                        <img id="map-prev8" class="map-preview" src="./Addons/maps/map8.png" style="display:none;height: 270px; margin:auto; margin-top:30%; transform-origin:0 0;">
-                    </i>
-                    
-                    <div class="btns" id="btns" style="position: absolute; height:80px; width:300px; bottom:20%; left:25%; vertical-align:middle;">
-                        <i><img onclick="chooser('Arrow-Left')" src="./Addons/Arrow-left.png" style="height: 70px; filter:brightness(70%); position:absolute; left:10px "></i>
-                        <span id="ch-id" style="color:#136377; font-family: PixelifySans, sans-serif; margin-top:10px; margin:auto; position:absolute; top:27%; right: 42%">
-                            Map 1
-                        </span>
-                        <i><img onclick="chooser('Arrow-Right')" src="./Addons/Arrow-right.png" style="height: 70px; filter:brightness(70%); position:absolute; right:10px"></i>
-                    </div>
-                </div>
+          <div>
+            <i
+              style="
+                height: 350px;
+                margin: auto;
+                margin-top: 25%;
+                filter: brightness(50%);
+              "
+            >
+              <img
+                id="map-prev1"
+                class="map-preview"
+                src="./Addons/maps/map1.png"
+                style="
+                  display: block;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev2"
+                class="map-preview"
+                src="./Addons/maps/map2.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev3"
+                class="map-preview"
+                src="./Addons/maps/map3.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev4"
+                class="map-preview"
+                src="./Addons/maps/map4.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev5"
+                class="map-preview"
+                src="./Addons/maps/map5.png"
+                style="
+                  display: none;
+                  height: 350px;
+                  margin: auto;
+                  margin-top: 25%;
+                  transform-origin: 0 0;
+                  margin-left: -15px;
+                "
+              />
+              <img
+                id="map-prev6"
+                class="map-preview"
+                src="./Addons/maps/map6.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev7"
+                class="map-preview"
+                src="./Addons/maps/map7.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+              <img
+                id="map-prev8"
+                class="map-preview"
+                src="./Addons/maps/map8.png"
+                style="
+                  display: none;
+                  height: 270px;
+                  margin: auto;
+                  margin-top: 30%;
+                  transform-origin: 0 0;
+                "
+              />
+            </i>
+
+            <div
+              class="btns"
+              id="btns"
+              style="
+                position: absolute;
+                height: 80px;
+                width: 300px;
+                bottom: 20%;
+                left: 25%;
+                vertical-align: middle;
+              "
+            >
+              <i
+                ><img
+                  onclick="chooser('Arrow-Left')"
+                  src="./Addons/Arrow-left.png"
+                  style="
+                    height: 70px;
+                    filter: brightness(70%);
+                    position: absolute;
+                    left: 10px;
+                  "
+              /></i>
+              <span
+                id="ch-id"
+                style="
+                  color: #136377;
+                  font-family: PixelifySans, sans-serif;
+                  margin-top: 10px;
+                  margin: auto;
+                  position: absolute;
+                  top: 27%;
+                  right: 42%;
+                "
+              >
+                Map 1
+              </span>
+              <i
+                ><img
+                  onclick="chooser('Arrow-Right')"
+                  src="./Addons/Arrow-right.png"
+                  style="
+                    height: 70px;
+                    filter: brightness(70%);
+                    position: absolute;
+                    right: 10px;
+                  "
+              /></i>
             </div>
-            <div style="width: 590px; height:20px; position:absolute; bottom:70px; align-items:center; justify-content:center; text-align:center">
-                <a onclick="redirect(4)" onmouseover="playSound(1)" class="start" style="background-color: transparent; color:#136377; margin:auto; width:fit-content; -webkit-text-stroke: .5px white; transition:all 1s ease-out; text-decoration:none; font-size:20px">Continue</a>
-            </div>
+          </div>
         </div>
-    
-        <i class="gg-disc" id="music-disc" onclick="musicswitch(400)" style="position: absolute; filter:invert(100%) brightness(70%); bottom: 30px; left: 30px; transform:scale(1.9); transition:all 1s ease-out;"></i>
+        <div
+          style="
+            width: 590px;
+            height: 20px;
+            position: absolute;
+            bottom: 70px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          "
+        >
+          <a
+            onclick="redirect(4)"
+            onmouseover="playSound(1)"
+            class="start"
+            style="
+              background-color: transparent;
+              color: #136377;
+              margin: auto;
+              width: fit-content;
+              -webkit-text-stroke: 0.5px white;
+              transition: all 1s ease-out;
+              text-decoration: none;
+              font-size: 20px;
+            "
+            >Continue</a
+          >
+        </div>
+      </div>
 
-        <p style="color: white; position:absolute; bottom:0; font-size: 13px; right:5px">
-            TheCheckerBoard V4.0.0
-        </p>
-        
-<div id="transition" style="display: none; opacity:0%; background-color:black; position:absolute; top:0; margin:auto; transition:all 1s ease-out; z-index:99; width:100%; height:100%;"></div>
+      <i
+        class="gg-disc"
+        id="music-disc"
+        onclick="musicswitch(400)"
+        style="
+          position: absolute;
+          filter: invert(100%) brightness(70%);
+          bottom: 30px;
+          left: 30px;
+          transform: scale(1.9);
+          transition: all 1s ease-out;
+        "
+      ></i>
+
+      <p
+        style="
+          color: white;
+          position: absolute;
+          bottom: 0;
+          font-size: 13px;
+          right: 5px;
+        "
+      >
+        TheCheckerBoard V4.0.0
+      </p>
+
+      <div
+        id="transition"
+        style="
+          display: none;
+          opacity: 0%;
+          background-color: black;
+          position: absolute;
+          top: 0;
+          margin: auto;
+          transition: all 1s ease-out;
+          z-index: 99;
+          width: 100%;
+          height: 100%;
+        "
+      ></div>
     </div>
-</body>
-<style>
-
-    .instr-state:hover{
-        cursor: pointer;
+  </body>
+  <style>
+    .instr-state:hover {
+      cursor: pointer;
     }
 
-    .blue-block{
-        position: absolute;
-        width:60px;
-        height: 60px;
-        background-color: gray;
-        animation: blink .5s alternate-reverse infinite;;
+    .blue-block {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: gray;
+      animation: blink 0.5s alternate-reverse infinite;
     }
 
-    .red-block{
-        position: absolute;
-        width:60px;
-        height: 60px;
-        background-color: red;
+    .red-block {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: red;
     }
 
-    .purple-block{
-        position: absolute;
-        width:60px;
-        height: 60px;
-        background-color: purple;
+    .purple-block {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: purple;
     }
 
-    .green-block{
-        position: absolute;
-        width:60px;
-        height: 60px;
-        background-color: greenyellow;
+    .green-block {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: greenyellow;
     }
 
-    .anim-rotate{
-        animation: rotate 2s infinite;
+    .anim-rotate {
+      animation: rotate 2s infinite;
     }
 
     @keyframes translation-x {
-        from{
-            left:10%
-        }
-        to{
-            left:100%
-        }
+      from {
+        left: 10%;
+      }
+      to {
+        left: 100%;
+      }
     }
 
     @keyframes rotate {
-        from{
-            transform: rotate(0deg) scale(1.9);
-        }
-        to{
-            transform: rotate(360deg) scale(1.9);
-        }
+      from {
+        transform: rotate(0deg) scale(1.9);
+      }
+      to {
+        transform: rotate(360deg) scale(1.9);
+      }
     }
 
     @keyframes blink {
-        from{
-            opacity: 100%;
-        }
-        to{
-            opacity: 40%;
-        }
+      from {
+        opacity: 100%;
+      }
+      to {
+        opacity: 40%;
+      }
     }
 
     .gg-disc,
     .gg-disc::after,
     .gg-disc::before {
-     display: block;
-     box-sizing: border-box;
-     border: 2px solid;
-     border-radius: 50%
-    }
-    
-    .gg-disc {
-     border-top-color: transparent;
-     border-bottom-color: transparent;
-     transform: rotate(45deg) scale(var(--ggs,1));
-     position: relative;
-     width: 14px;
-     height: 14px
+      display: block;
+      box-sizing: border-box;
+      border: 2px solid;
+      border-radius: 50%;
     }
 
-    .gg-disc:hover{
-        cursor: pointer;
-        filter: sepia(80%);
+    .gg-disc {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(45deg) scale(var(--ggs, 1));
+      position: relative;
+      width: 14px;
+      height: 14px;
     }
-    
+
+    .gg-disc:hover {
+      cursor: pointer;
+      filter: sepia(80%);
+    }
+
     .gg-disc::after,
     .gg-disc::before {
-     content: "";
-     position: absolute;
-     width: 6px;
-     height: 6px;
-     top: 2px;
-     left: 2px
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 2px;
+      left: 2px;
     }
-    
+
     .gg-disc::after {
-     width: 22px;
-     height: 22px;
-     border-radius: 100%;
-     top: -6px;
-     left: -6px
-    } 
-
-    .start:hover{
-        cursor: pointer;
-        letter-spacing: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 100%;
+      top: -6px;
+      left: -6px;
     }
 
-    *{
-        font-family: PixelifySans, sans-serif;
-        user-select: none; 
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
+    .start:hover {
+      cursor: pointer;
+      letter-spacing: 2px;
     }
 
-    a{
-        font-family: PixelifySans, sans-serif;
+    * {
+      font-family: PixelifySans, sans-serif;
+      user-select: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
     }
 
-    .btns i img:hover{
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-    .btns i img{
-        transition: all 1s ease-out;
+    a {
+      font-family: PixelifySans, sans-serif;
     }
 
-    .options a{
-    text-align: left;
-    width: 150px;
-    height: 30px;
-    transform: perspective(200px);
-    color: #8c8308;
-    text-decoration: none;
-    font-family: PixelifySans, sans-serif;
-    font-size: 25px;
-    padding-bottom: 25px;
-    display: block;
-    transition: all .3s ease-out;
-    letter-spacing: 2px;
+    .btns i img:hover {
+      transform: scale(1.1);
+      cursor: pointer;
     }
-    .options a:hover{
-    color: #136377;
-    letter-spacing: 4.5px;
-    cursor: pointer;   
-    }
-    .main{
-        position: absolute;
-        width: 590px; height:700px;
-        margin: auto;
-        transition: all 4s ease-in-out;
-        background-color: black;
-    }
-</style>
-
-<script src="./Addons/Packages/JQuery 3.1.1/jquery-3.1.1.min.js"></script>
-<script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
-<script src="index.js"></script>
-<script>
-    var blck2
-    var blck4
-    var blck6
-    var blck8
-    var isplaying = true
-    document.getElementById('music-disc').classList.add('anim-rotate')
-
-    function musicswitch(){
-        if(isplaying){
-            isplaying = false
-            document.getElementById('music-disc').style.animationPlayState = 'paused'
-            window.parent.musicswitch()
-        }
-        else{
-            isplaying = true
-            document.getElementById('music-disc').style.animationPlayState = 'running'
-            window.parent.musicswitch()
-        }
-        
+    .btns i img {
+      transition: all 1s ease-out;
     }
 
-    function scaler(){
-        if(window.parent.document.querySelector('body').style.filter !== 'grayscale(100%)'){
-        window.parent.document.querySelector('body').classList.add('grayscale')}
-        else{
-            window.parent.document.querySelector('body').classList.remove('grayscale')
-        }
+    .options a {
+      text-align: left;
+      width: 150px;
+      height: 30px;
+      transform: perspective(200px);
+      color: #8c8308;
+      text-decoration: none;
+      font-family: PixelifySans, sans-serif;
+      font-size: 25px;
+      padding-bottom: 25px;
+      display: block;
+      transition: all 0.3s ease-out;
+      letter-spacing: 2px;
+    }
+    .options a:hover {
+      color: #136377;
+      letter-spacing: 4.5px;
+      cursor: pointer;
+    }
+    .main {
+      position: absolute;
+      width: 590px;
+      height: 700px;
+      margin: auto;
+      transition: all 4s ease-in-out;
+      background-color: black;
+    }
+  </style>
+
+  <script src="./Addons/Packages/JQuery 3.1.1/jquery-3.1.1.min.js"></script>
+  <script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
+  <script src="index.js"></script>
+  <script>
+    var blck2;
+    var blck4;
+    var blck6;
+    var blck8;
+    var isplaying = true;
+    document.getElementById("music-disc").classList.add("anim-rotate");
+
+    function musicswitch() {
+      if (isplaying) {
+        isplaying = false;
+        document.getElementById("music-disc").style.animationPlayState =
+          "paused";
+        window.parent.musicswitch();
+      } else {
+        isplaying = true;
+        document.getElementById("music-disc").style.animationPlayState =
+          "running";
+        window.parent.musicswitch();
+      }
     }
 
-    
-</script>
+    function scaler() {
+      if (
+        window.parent.document.querySelector("body").style.filter !==
+        "grayscale(100%)"
+      ) {
+        window.parent.document.querySelector("body").classList.add("grayscale");
+      } else {
+        window.parent.document
+          .querySelector("body")
+          .classList.remove("grayscale");
+      }
+    }
+  </script>
 </html>

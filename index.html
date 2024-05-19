@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        @font-face { font-family: PixelifySans; src: url('./Addons/PixelifySans.ttf');}
+      @font-face {
+        font-family: PixelifySans;
+        src: url("./Addons/PixelifySans.ttf");
+      }
     </style>
-</head>
+  </head>
 
-<body style="background-color: transparent; overflow: hidden;">
-
+  <body style="background-color: transparent; overflow: hidden">
     <div class="main" id="main">
-        <div class="top-bar" style="position: absolute; top: 30px; color:white; display:flex; width: 590px;">
-            <div style="text-align: center; width: 100%;">
-                
-            <h4 style="text-align:left; font-size: 12px; margin-left: 10px;">Previous best: <span id="prev-highest">0</span></h4>
-            <h4 style="text-align: center; margin-top:-1px">
-                Gather all the green squares on the map <br>
-            </h4>
-
-            </div>
-            <div class="stats" style="position:absolute; top:0; right:25px;">
-                moves: <span id="Num-case">0</span><br>
-                Money: <span id="Money-case" style="color: rgb(63, 143, 63);">0</span>
-            </div>
+      <div
+        class="top-bar"
+        style="
+          position: absolute;
+          top: 30px;
+          color: white;
+          display: flex;
+          width: 590px;
+        "
+      >
+        <div style="text-align: center; width: 100%">
+          <h4 style="text-align: left; font-size: 12px; margin-left: 10px">
+            Previous best: <span id="prev-highest">0</span>
+          </h4>
+          <h4 style="text-align: center; margin-top: -1px">
+            Gather all the green squares on the map <br />
+          </h4>
         </div>
+        <div class="stats" style="position: absolute; top: 0; right: 25px">
+          moves: <span id="Num-case">0</span><br />
+          Money: <span id="Money-case" style="color: rgb(63, 143, 63)">0</span>
+        </div>
+      </div>
 
-        <div class="game-area" id="game-area" style="position: absolute; bottom: 0; width: 590px; height: 500px; top:90px">
-            <canvas width="590px" height="500px" style="transform-origin:0 0; position:absolute; top:0"></canvas>
-            <div id="cursor" class="cursor"></div>
+      <div
+        class="game-area"
+        id="game-area"
+        style="
+          position: absolute;
+          bottom: 0;
+          width: 590px;
+          height: 500px;
+          top: 90px;
+        "
+      >
+        <canvas
+          width="590px"
+          height="500px"
+          style="transform-origin: 0 0; position: absolute; top: 0"
+        ></canvas>
+        <div id="cursor" class="cursor"></div>
 
-            <div id="game-over" class="GMO-scr" style="display: none; width: 100%; height: 700px; opacity: 80%; background-color:black; position:absolute; top:0; color: white; transition: all 1s ease-out; opacity: 0%">
-                <h1 class="GMO-txt" style="background-color: transparent; position:absolute; font-size:80px; top: 25%; left:40px; transition: all 1s ease-out;">
-                    GAME <br> OVER
-                </h1>
+        <div
+          id="game-over"
+          class="GMO-scr"
+          style="
+            display: none;
+            width: 100%;
+            height: 700px;
+            opacity: 80%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            color: white;
+            transition: all 1s ease-out;
+            opacity: 0%;
+          "
+        >
+          <h1
+            class="GMO-txt"
+            style="
+              background-color: transparent;
+              position: absolute;
+              font-size: 80px;
+              top: 25%;
+              left: 40px;
+              transition: all 1s ease-out;
+            "
+          >
+            GAME <br />
+            OVER
+          </h1>
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -46,10 +99,24 @@
                         window.location.reload()
                     }, 1000)
                 }, 100)
-                " style="position:absolute; width:150px; height:40px; top:30%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">
-                RESTART</a>
+                "
+            style="
+              position: absolute;
+              width: 150px;
+              height: 40px;
+              top: 30%;
+              right: 30px;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+            "
+          >
+            RESTART</a
+          >
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -57,21 +124,73 @@
                     setTimeout(() => {
                         window.parent.redir(null, 2)
                     }, 1000)
-                }, 100)" 
-                style="position:absolute; width:150px; height:40px; top:43%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">
-                MAIN MENU</a>
-            </div>
+                }, 100)"
+            style="
+              position: absolute;
+              width: 150px;
+              height: 40px;
+              top: 43%;
+              right: 30px;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+            "
+          >
+            MAIN MENU</a
+          >
+        </div>
 
-            <div id="win-game" class="GMO-scr" style="display: none; width: 100%; height: 700px; opacity: 80%; background-color:black; position:absolute; top:0; color: white; transition: all 1s ease-out; opacity: 0%">
-                <h1 class="GMO-txt" style="background-color: transparent; position:absolute; font-size:80px; top: 5%; transition: all 1s ease-out; right:40px">
-                    GAME
-                </h1>
+        <div
+          id="win-game"
+          class="GMO-scr"
+          style="
+            display: none;
+            width: 100%;
+            height: 700px;
+            opacity: 80%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            color: white;
+            transition: all 1s ease-out;
+            opacity: 0%;
+          "
+        >
+          <h1
+            class="GMO-txt"
+            style="
+              background-color: transparent;
+              position: absolute;
+              font-size: 80px;
+              top: 5%;
+              transition: all 1s ease-out;
+              right: 40px;
+            "
+          >
+            GAME
+          </h1>
 
-                <h1 class="GMO-txt" style="background-color: transparent; position:absolute; font-size:80px; bottom: 28%; left:40px; transition: all 1s ease-out; color:rgb(97, 228, 99);">
-                    SOLVED <span style="color: rgb(159, 65, 159); font-size:30px">in <span id="moves">0</span> moves</span>
-                </h1>
+          <h1
+            class="GMO-txt"
+            style="
+              background-color: transparent;
+              position: absolute;
+              font-size: 80px;
+              bottom: 28%;
+              left: 40px;
+              transition: all 1s ease-out;
+              color: rgb(97, 228, 99);
+            "
+          >
+            SOLVED
+            <span style="color: rgb(159, 65, 159); font-size: 30px"
+              >in <span id="moves">0</span> moves</span
+            >
+          </h1>
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -81,10 +200,25 @@
                         window.location.reload()
                     }, 1000)
                 }, 100)
-                " style="position:absolute; width:590px; text-align:center; height:40px; top:24%; color: white; font-size:20px; transition:all 1s ease-out; transform-origin: 0 0;">
-                RESTART</a>
+                "
+            style="
+              position: absolute;
+              width: 590px;
+              text-align: center;
+              height: 40px;
+              top: 24%;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+              transform-origin: 0 0;
+            "
+          >
+            RESTART</a
+          >
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 setTimeout(() => {
                     console.log(data)
                     var mapnum
@@ -112,10 +246,25 @@
                     }, 1000)
                 }, 100)
                 }, 100)
-                " style="position:absolute; width:590px; text-align:center; height:40px; top:36%; color: white; font-size:20px; transition:all 1s ease-out; transform-origin: 0 0;">
-                NEXT MAP</a>
+                "
+            style="
+              position: absolute;
+              width: 590px;
+              text-align: center;
+              height: 40px;
+              top: 36%;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+              transform-origin: 0 0;
+            "
+          >
+            NEXT MAP</a
+          >
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -123,25 +272,78 @@
                     setTimeout(() => {
                         window.parent.redir(null, 2)
                     }, 1000)
-                }, 100)" 
-                style="position:absolute; width:590px; text-align:center; height:40px; top:48%; color: white; font-size:20px; transition:all 1s ease-out; transform-origin: 0 0;">
-                MAIN MENU</a>
-            </div>
+                }, 100)"
+            style="
+              position: absolute;
+              width: 590px;
+              text-align: center;
+              height: 40px;
+              top: 48%;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+              transform-origin: 0 0;
+            "
+          >
+            MAIN MENU</a
+          >
+        </div>
 
-            <div id="pause-game" class="STOP-scr" style="display: none; width: 100%; height: 700px; opacity: 0%; background-color:black; position:absolute; top:0; color: white; transition: all .5s ease-out; opacity: 0%">
-                <h1 class="GMO-txt" style="background-color: transparent; position:absolute; font-size:80px; top: 25%; left:40px; transition: all 1s ease-out;">
-                    GAME <br> PAUSED
-                </h1>
+        <div
+          id="pause-game"
+          class="STOP-scr"
+          style="
+            display: none;
+            width: 100%;
+            height: 700px;
+            opacity: 0%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            color: white;
+            transition: all 0.5s ease-out;
+            opacity: 0%;
+          "
+        >
+          <h1
+            class="GMO-txt"
+            style="
+              background-color: transparent;
+              position: absolute;
+              font-size: 80px;
+              top: 25%;
+              left: 40px;
+              transition: all 1s ease-out;
+            "
+          >
+            GAME <br />
+            PAUSED
+          </h1>
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('pause-game').style.opacity = '0%'
                 setTimeout(() => {
                     document.getElementById('transition').style.display = 'none'
-                }, 500)" 
-                style="position:absolute; width:150px; height:40px; top:27%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">
-                RESUME</a>
+                }, 500)"
+            style="
+              position: absolute;
+              width: 150px;
+              height: 40px;
+              top: 27%;
+              right: 30px;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+            "
+          >
+            RESUME</a
+          >
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -150,11 +352,24 @@
                         document.getElementById('transition').style.opacity = '0%'
                         window.location.reload()
                     }, 1000)
-                }, 100)" 
-                style="position:absolute; width:150px; height:40px; top:37%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">
-                RESTART</a>
+                }, 100)"
+            style="
+              position: absolute;
+              width: 150px;
+              height: 40px;
+              top: 37%;
+              right: 30px;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+            "
+          >
+            RESTART</a
+          >
 
-                <a class="GMO-btn" onclick="
+          <a
+            class="GMO-btn"
+            onclick="
                 document.getElementById('transition').style.display = 'block'
                 setTimeout(() => {
                     document.getElementById('transition').style.opacity = '100%'
@@ -162,106 +377,135 @@
                     setTimeout(() => {
                         window.parent.redir(null, 2)
                     }, 1000)
-                }, 100)" 
-                style="position:absolute; width:150px; height:40px; top:47%; right: 30px; color: white; font-size:20px; transition:all 1s ease-out;">
-                MAIN MENU</a>
-            </div>
-            
+                }, 100)"
+            style="
+              position: absolute;
+              width: 150px;
+              height: 40px;
+              top: 47%;
+              right: 30px;
+              color: white;
+              font-size: 20px;
+              transition: all 1s ease-out;
+            "
+          >
+            MAIN MENU</a
+          >
         </div>
-        <div id="transition" style="width: 590px; height:700px; opacity:90%; display: none; background-color:black; position:absolute; top:30px; transition:all 1s ease-out;"></div>
+      </div>
+      <div
+        id="transition"
+        style="
+          width: 590px;
+          height: 700px;
+          opacity: 90%;
+          display: none;
+          background-color: black;
+          position: absolute;
+          top: 30px;
+          transition: all 1s ease-out;
+        "
+      ></div>
     </div>
-    
+  </body>
 
-</body>
-
-<style>
-
-    .pause-game a{
-        padding-bottom: 10px;
+  <style>
+    .pause-game a {
+      padding-bottom: 10px;
     }
 
-    .top-bar{
-        -webkit-app-region:drag;
+    .top-bar {
+      -webkit-app-region: drag;
     }
 
-    a{
-        user-select:none;
+    a {
+      user-select: none;
     }
 
-    *{
-        -webkit-app-region: no-drag;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        user-select: none;
-        font-family: PixelifySans, sans-serif;
-        filter:grayscale(10%);
+    * {
+      -webkit-app-region: no-drag;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      user-select: none;
+      font-family: PixelifySans, sans-serif;
+      filter: grayscale(10%);
     }
 
-    .STOP-scr, .GMO-scr{
-        -webkit-app-region: drag;
+    .STOP-scr,
+    .GMO-scr {
+      -webkit-app-region: drag;
     }
 
-    .GMO-btn:hover{
-        letter-spacing: 5px;
-        cursor: pointer ;
+    .GMO-btn:hover {
+      letter-spacing: 5px;
+      cursor: pointer;
 
-        h1{
-            color: rgb(91, 1, 1)
-        }
+      h1 {
+        color: rgb(91, 1, 1);
+      }
     }
     .game-area .cursor {
-    position: absolute;
+      position: absolute;
     }
 
-    canvas{
-        position: absolute;
-        top: 0;
+    canvas {
+      position: absolute;
+      top: 0;
     }
 
-    .cursor{
-        border-radius: 5px;
-        width: 0;
-        height: 0;
-        top: 0;
-        left: 0;
-        position: absolute;
-        animation: blink .5s alternate-reverse infinite;
-        background-color: gray;
-        transition: all .3s ease-out;
-        transform-origin: 0 0;
+    .cursor {
+      border-radius: 5px;
+      width: 0;
+      height: 0;
+      top: 0;
+      left: 0;
+      position: absolute;
+      animation: blink 0.5s alternate-reverse infinite;
+      background-color: gray;
+      transition: all 0.3s ease-out;
+      transform-origin: 0 0;
     }
 
     @keyframes blink {
-        from{
-            opacity: 100%;
-        }
-        to{
-            opacity: 40%;
-        }
+      from {
+        opacity: 100%;
+      }
+      to {
+        opacity: 40%;
+      }
     }
 
-.main{
-    user-select: none;
-    width: 592px;
-    height: 576px;
-    margin: auto;
-    background-color: black;
-    transform: scale(10);
-    transition: all 1.5s ease-in-out;
-}
-    
-@keyframes tilt-shaking {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
-  }
-</style>
+    .main {
+      user-select: none;
+      width: 592px;
+      height: 576px;
+      margin: auto;
+      background-color: black;
+      transform: scale(10);
+      transition: all 1.5s ease-in-out;
+    }
 
-<script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
-<script src="main.js" defer></script>
+    @keyframes tilt-shaking {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(0eg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  </style>
 
+  <script src="./Addons/Packages/Soundhandler/howler.min.js"></script>
+  <script src="main.js" defer></script>
 </html>
